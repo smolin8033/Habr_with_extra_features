@@ -28,7 +28,20 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
+
+
+DJOSER = {
+    'SERIALIZERS': {
+        'user_create': 'users.serializers.UserRegistrationSerializer'
+    }
+}
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -40,6 +53,8 @@ INSTALLED_APPS = [
     # various_soft
     'phonenumber_field',
     'phonenumbers',
+    'djoser',
+    'rest_framework',
     # apps
     'users.apps.UsersConfig',
 ]

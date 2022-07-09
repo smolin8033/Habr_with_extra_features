@@ -10,8 +10,10 @@ SEX_CHOICES = (
 
 
 class CustomUser(AbstractUser):
-    phone_number = PhoneNumberField(blank=True, unique=True)
-    email = models.EmailField(unique=True, blank=True)
-    personal_info = models.CharField(max_length=300)
-    sex = models.CharField(max_length=1, choices=SEX_CHOICES)
+    phone_number = PhoneNumberField(blank=True, unique=True, null=True)
+    email = models.EmailField(unique=True, null=True, blank=True)
+    personal_info = models.CharField(max_length=300, blank=True)
+    sex = models.CharField(max_length=1, choices=SEX_CHOICES, blank=True)
     age = models.IntegerField(blank=True, null=True)
+
+    REQUIRED_FIELDS = ['email', 'password']

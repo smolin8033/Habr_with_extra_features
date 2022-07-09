@@ -7,3 +7,4 @@ psycopg2==2.9.3
 django-phonenumber-field
 django-phonenumbers
 Pillow==9.2.0
+djoser==2.1.0
