@@ -20,4 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^api/', include('djoser.urls')),
+    url(r'^api/', include('djoser.urls.authtoken')),
 ]
