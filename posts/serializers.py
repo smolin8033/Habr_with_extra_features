@@ -10,6 +10,7 @@ class PostReadSerializer(ModelSerializer):
     class Meta:
         model = Post
         fields = (
+            'id',
             'author',
             'body',
             'created_at',
@@ -21,6 +22,7 @@ class PostSerializer(ModelSerializer):
     class Meta:
         model = Post
         fields = (
+            'id',
             'author',
             'body',
             'images',
