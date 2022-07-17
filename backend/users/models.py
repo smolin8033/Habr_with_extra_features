@@ -3,17 +3,20 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
 
-SEX_CHOICES = (
-    ('F', 'Female'),
-    ('M', 'Male'),
-)
+class User(AbstractUser):
+    SEX_CHOICES = (
+        ('F', 'Female'),
+        ('M', 'Male'),
+    )
 
-
-class CustomUser(AbstractUser):
-    phone_number = PhoneNumberField(blank=True, unique=True, null=True)
-    email = models.EmailField(unique=True, null=True, blank=True)
-    personal_info = models.CharField(max_length=300, blank=True)
+    phone_number = PhoneNumberField(unique=True)
+    email = models.EmailField(unique=True)
+    personal_info = models.TextField(blank=True)
     sex = models.CharField(max_length=1, choices=SEX_CHOICES, blank=True)
-    age = models.IntegerField(blank=True, null=True)
+    age = models.IntegerField(null=True)
 
-    REQUIRED_FIELDS = ['email', 'password']
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['first_name', 'last_name']
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
