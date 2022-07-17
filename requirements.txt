@@ -8,3 +8,4 @@ django-phonenumber-field
 django-phonenumbers
 Pillow==9.2.0
 djoser==2.1.0
+django-ckeditor==6.4.2
