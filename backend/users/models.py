@@ -14,6 +14,7 @@ class User(AbstractUser):
     personal_info = models.TextField(blank=True)
     sex = models.CharField(max_length=1, choices=SEX_CHOICES, blank=True)
     age = models.IntegerField(null=True)
+    photo = models.ImageField(upload_to='users', blank=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name']
