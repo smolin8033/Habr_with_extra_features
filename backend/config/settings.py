@@ -28,7 +28,6 @@ INSTALLED_APPS = [
     # apps
     'users.apps.UsersConfig',
     'posts.apps.PostsConfig',
-    'images.apps.ImagesConfig',
 ]
 
 
