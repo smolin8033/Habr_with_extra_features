@@ -9,7 +9,7 @@ class UserRegistrationSerializer(BaseUserRegistrationSerializer):
         fields = tuple(User.REQUIRED_FIELDS) + (
             settings.LOGIN_FIELD,
             settings.USER_ID_FIELD,
-            'password', 'username', 'photo'
+            'username', 'password', 'photo'
         )
 
 
