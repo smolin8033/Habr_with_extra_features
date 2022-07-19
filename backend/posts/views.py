@@ -43,3 +43,20 @@ class PostViewSet(ModelViewSet):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         except Exception:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    def update(self, request, *args, **kwargs):
+        """
+        В душе не чаю как update сделать, изображения - объекты разных типов, принты ниже
+        """
+        # try:
+        post = get_object_or_404(Post, pk=kwargs['pk'])
+        post_images = post.post_images.all()
+        images = request.data.getlist('image')
+        print([i for i in post_images])
+        print([i for i in images])
+
+
+        serializer = PostSerializer(post)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+        # except Exception:
+            # return Response(status=status.HTTP_400_BAD_REQUEST)
