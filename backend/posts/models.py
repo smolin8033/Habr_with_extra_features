@@ -2,6 +2,10 @@ from django.db import models
 
 
 class Post(models.Model):
+    """
+    null=True ставить не хотел, но в противном случае ошибка при создании
+    файлов миграции db needs sth to populate the existing rows
+    """
     author = models.ForeignKey('users.User', on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=100, null=True)
     body = models.TextField()

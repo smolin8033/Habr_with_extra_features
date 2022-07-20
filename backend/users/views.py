@@ -2,6 +2,10 @@ from djoser.views import UserViewSet as BaseViewSet
 
 
 class UserViewSet(BaseViewSet):
+    """
+    Наследуется от UserViewSet модуля djoser. Разрешает только
+    GET и POST запросы. Отключает все эндпоинты кроме регистрации и логина
+    """
     http_method_names = ['get', 'post']
     me = None
     activation = None
