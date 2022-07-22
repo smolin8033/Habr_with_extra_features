@@ -9,11 +9,10 @@ from users.routers import router as users_router
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # url(r'^api/', include('djoser.urls')),
-    url(r'^api/', include(posts_router.urls)),
-    url(r'^api/', include(users_router.urls)),
+    path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
-    path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    url(r'^api/', include(users_router.urls)),
+    url(r'^api/', include(posts_router.urls)),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
