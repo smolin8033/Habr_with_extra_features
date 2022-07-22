@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404
+from drf_spectacular.utils import extend_schema
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
@@ -8,6 +9,7 @@ from posts.serializers import PostSerializer
 from users.models import User
 
 
+@extend_schema(tags=['Posts'])
 class PostViewSet(ModelViewSet):
 
     queryset = Post.objects.all()
@@ -48,7 +50,6 @@ class PostViewSet(ModelViewSet):
         images = request.data.getlist('image')
         print([i for i in post_images])
         print([i for i in images])
-
 
         serializer = PostSerializer(post)
         return Response(serializer.data, status=status.HTTP_200_OK)
