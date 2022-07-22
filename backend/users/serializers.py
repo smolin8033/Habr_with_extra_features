@@ -16,12 +16,3 @@ class UserRegistrationSerializer(BaseUserRegistrationSerializer):
             settings.USER_ID_FIELD,
             'username', 'password', 'photo'
         )
-
-
-"""
-Так не работает
-class UserRegistrationSerializer(BaseUserRegistrationSerializer):
-    class Meta(BaseUserRegistrationSerializer.Meta):
-        model = User
-        fields = '__all__'
-"""

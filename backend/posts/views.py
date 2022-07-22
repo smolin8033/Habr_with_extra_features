@@ -9,10 +9,7 @@ from users.models import User
 
 
 class PostViewSet(ModelViewSet):
-    """
-    Пока не хэндлил 401 Unauthorized, я не знаю, насколько валидно логин работает вообще.
-    Насчет исключений тоже спросить хочу. Как ловить правильно исключение тут тоже.
-    """
+
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
@@ -45,9 +42,6 @@ class PostViewSet(ModelViewSet):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
     def update(self, request, *args, **kwargs):
-        """
-        В душе не чаю как update сделать, изображения - объекты разных типов, принты ниже
-        """
         # try:
         post = get_object_or_404(Post, pk=kwargs['pk'])
         post_images = post.post_images.all()

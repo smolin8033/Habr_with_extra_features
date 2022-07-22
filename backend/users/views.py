@@ -1,10 +1,11 @@
 from djoser.views import UserViewSet as BaseViewSet
+from drf_spectacular.utils import extend_schema
 
 
+@extend_schema(tags=['Users'])
 class UserViewSet(BaseViewSet):
     """
-    Наследуется от UserViewSet модуля djoser. Разрешает только
-    GET и POST запросы. Отключает все эндпоинты кроме регистрации и логина
+    Работа с пользователями
     """
     http_method_names = ['get', 'post']
     me = None
